@@ -1,23 +1,12 @@
 <?php
     require_once("PicPay/autoload.php");
     
-    /* 
-        Dados a serem passados na instância:
-        
-        - Referência ID;
-        - Nome Cliente;
-        - Sobrenome;
-        - CPF;
-        - E-mail;
-        - Telefone;
-        - Nome Produto;
-        - Preço Produto.
-    */
-    
-    $sale = new PostSaleToPicPay(999768,"Teste","Teste",12312312312,"teste@gmail.com",55999999999,"Tenis",99);
+    /* Intanciar a classe de postagem e enviar os parâmetros */
+    $sale = new PostSaleToPicPay(/* Ref ID, Nome, Sobrenome, CPF, Email, Telefone, Produto, Preço */);
     $sale->sendInfosToPicPay();
 
-    $cancel = new CancelOrderPicPay(999768, 'asdasdasd342');
+    /* Instanciar a classe de cancelamento e enviar os parâmetros */
+    $cancel = new CancelOrderPicPay(/* Ref ID, Auth ID */);
     $cancel->sendCancelToPicPay();
 
 ?>

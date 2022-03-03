@@ -7,8 +7,10 @@
     class UpdateDataBase{
         /* Função de incluir no Banco de Dados */
         public function IncludeDB($refID,$nameClient,$lastnameClient,$cpfClient,$emailClient,$phoneClient,$nameProduct,$priceProduct){
-            /* Inclua o seu Banco de Dados abaixo */
-            $pdo = new PDO('mysql:host=localhost;dbname=apipicpay','root','');
+        
+            // ---- INCLUA O SEU B.D ABAIXO: ---- //
+            
+            /* $pdo = new PDO('mysql:host=localhost;dbname=apipicpay','root',''); */
             $configPicPay = new ConfigPicPay;
             
             /* Incluir se estiver utilizando a nossa função de inclusão */
