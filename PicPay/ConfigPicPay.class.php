@@ -1,6 +1,6 @@
 <?php
     //require_once("SEU BANCO DE DADOS");
-    class Config{
+    class ConfigPicPay{
 //      Chave para enviar informações do e-commerce para o PicPay;
 //      Pegue a sua chave em: https://painel-empresas.picpay.com/
         public $x_picpay_token = '55dd3fa0-c449-437f-a844-f2c1c370dd8d';

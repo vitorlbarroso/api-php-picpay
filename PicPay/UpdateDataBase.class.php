@@ -4,12 +4,12 @@
     /* Incluindo a classe de Config do PicPay */
     require_once("ConfigPicPay.class.php");
     
-    class QuerysDB{
+    class UpdateDataBase{
         /* Função de incluir no Banco de Dados */
         public function IncludeDB($refID,$nameClient,$lastnameClient,$cpfClient,$emailClient,$phoneClient,$nameProduct,$priceProduct){
             /* Inclua o seu Banco de Dados abaixo */
             $pdo = new PDO('mysql:host=localhost;dbname=apipicpay','root','');
-            $configPicPay = new Config;
+            $configPicPay = new ConfigPicPay;
             
             /* Incluir se estiver utilizando a nossa função de inclusão */
             if(($configPicPay->includeBD == 'Sim') || ($configPicPay->includeBD == 'sim')){
@@ -56,7 +56,7 @@
         public function updateStatusBD($refID,$authID,$status){
             /* Inclua seu banco de dados abaixo */
             $pdo = new PDO('mysql:host=localhost;dbname=apipicpay','root','');
-            $configPicPay = new Config;
+            $configPicPay = new ConfigPicPay;
             
             /* Atualizar se estiver utilizando nossa função de inclusão */
             if(($configPicPay->includeBD == 'Sim') || ($configPicPay->includeBD == 'sim')){

@@ -2,7 +2,7 @@
     require_once("ConfigPicPay.class.php");
     require_once("UpdateDataBase.class.php");
     
-    class GetStatus{
+    class GetStatusPicPay{
         /* Informação da compra: */
         protected $refId;
         protected $x_picpay_token;
@@ -12,7 +12,7 @@
         public function __construct($refId){
             $this->refId = $refId;
             /* Definindo o token de callback do PicPay */
-            $tokenCallback = new Config;
+            $tokenCallback = new ConfigPicPay;
             $this->x_picpay_token = $tokenCallback->x_picpay_token;
             $this->x_seller_token = $tokenCallback->x_seller_token;
         }
@@ -55,7 +55,7 @@
                 }
                 
                 /* Atualizando no Banco de Dados */
-                $updateDB = new QuerysDB;
+                $updateDB = new UpdateDataBase;
                 /* Instânciando e passando parâmetros */
                 $updateDB -> updateStatusBD($refID,$authID,$statusUpdate);
             }
@@ -66,7 +66,7 @@
     $notificationConverted = json_decode($notificationPicPay);
     
     if(isset($notificationConverted->referenceId)){
-        $updateStatus = new GetStatus($notificationConverted->referenceId);
+        $updateStatus = new GetStatusPicPay($notificationConverted->referenceId);
         $updateStatus->updateStatus($notificationConverted->referenceId,$notificationConverted->authorizationId);
         http_response_code(200);
     }else{

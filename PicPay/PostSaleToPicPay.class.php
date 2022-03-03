@@ -4,7 +4,7 @@
     require_once('UpdateDataBase.class.php');
     
     /* Classe que recebe informações do produto e cliente */
-    class InfoSale{
+    class PostSaleToPicPay{
         /* Informações Cliente */
         protected $referenceId;
         protected $nameClient;
@@ -32,7 +32,7 @@
         
         /* Função que prepara as informações para o PicPay */
         public function prepareInfosToPicPay(){
-            $config = new Config;
+            $config = new ConfigPicPay;
             $date = date('Y-m-d H:i:s', strtotime("+1 day "));
             return $infos = [
                 'referenceId' => $this->referenceId,
@@ -52,7 +52,7 @@
         
         /* Função que envia as informações para o PicPay */
         public function sendInfosToPicPay(){
-            $config = new Config;
+            $config = new ConfigPicPay;
             $crl = curl_init("https://appws.picpay.com/ecommerce/public/payments/");
             curl_setopt($crl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($crl, CURLOPT_POSTFIELDS, HTTP_BUILD_QUERY($this->prepareInfosToPicPay()));
@@ -61,7 +61,7 @@
             curl_close($crl);
             $callbackCrl = json_decode($callbackCrl);
             if(isset($callbackCrl->paymentUrl)){
-                $queryDB = new QuerysDB;
+                $queryDB = new UpdateDataBase;
                 $queryDB->IncludeDB($this->referenceId,$this->nameClient,$this->lastNameClient,$this->cpfClient,$this->emailClient,$this->phoneClient,$this->nameProduct,$this->priceProduct);
             }
         }
