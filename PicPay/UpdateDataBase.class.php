@@ -47,7 +47,7 @@
             /* Incluir se não estiver utilizando a nossa função de inclusão */
             if(($configPicPay->includeBD == 'Nao') || ($configPicPay->includeBD == 'nao') || ($configPicPay->includeBD == '')){
             
-                /* COLOQUE A SUA QUERY AQUI DENTRO! */
+                /* COLOQUE A SUA QUERY DE INCLUSÃO DE DADOS */
                 
             }
         }
@@ -68,10 +68,14 @@
                 $cAuthorizationId = $infosBD['cAuthorizationId']; // Coluna para ID de cancelamento do pedido;
                 $cStatusOrder = $infosBD['cStatusOrder']; // Coluna para status do pedido;
                 
-                
-                
                 $query = $pdo -> prepare("UPDATE {$tableBD} SET {$cAuthorizationId} = ?, {$cStatusOrder} = ? WHERE {$cReferenceId} = {$refID}");
                 $query -> execute([$authID,$status]);
+            }
+            
+            if(($configPicPay->includeBD == 'Nao') || ($configPicPay->includeBD == 'nao') || ($configPicPay->includeBD == '')){
+            
+                /* COLOQUE A SUA QUERY DE ATUALIZAÇÃO DE STATUS */
+                
             }
         }
         

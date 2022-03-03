@@ -36,7 +36,7 @@
                         $statusUpdate = 'Aguardando';
                         break;
                     case 'expired':
-                        $statusUpdate = 'Expirado';
+                        $statusUpdate = 'Cancelado';
                         break;
                     case 'analysis':
                         $statusUpdate = 'Analise';
