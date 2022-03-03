@@ -63,6 +63,7 @@
             if(isset($callbackCrl->paymentUrl)){
                 $queryDB = new UpdateDataBase;
                 $queryDB->IncludeDB($this->referenceId,$this->nameClient,$this->lastNameClient,$this->cpfClient,$this->emailClient,$this->phoneClient,$this->nameProduct,$this->priceProduct);
+                return $callbackCrl->paymentUrl;
             }
         }
     }
